@@ -29,6 +29,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8'
     ],
     description="Tulane NLP project",
     entry_points={
@@ -49,7 +50,7 @@ setup(
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/tulane-cmps6730/sample-project',
+    url='https://github.com/tulane-cmps6730/project-hate',
     version='0.1.0',
     zip_safe=False,
 )
