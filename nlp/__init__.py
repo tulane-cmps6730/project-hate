@@ -3,8 +3,8 @@
 """Top-level package for nlp."""
 
 __author__ = """A Student"""
-__email__ = 'student@example.com'
-__version__ = '0.1.0'
+__email__ = 'mmontgomery1@tulane.edu'
+__version__ = '0.1.0'##I guess?
 
 # -*- coding: utf-8 -*-
 import configparser
@@ -15,9 +15,9 @@ import os
 # here is an example.
 def write_default_config(path):
 	w = open(path, 'wt')
-	w.write('[data]\n')
-	w.write('url = https://www.dropbox.com/s/o0nxd8pnwy809u2/headlines.csv?dl=1\n')
-	w.write('file = %s%s%s\n' % (nlp_path, os.path.sep, 'headlines.csv'))
+	w.write('[data]\n')#<a data-resin-target="openfile" class="item-link item-link " href="/file/1519554536417">implicit_hate_v1_stg1_posts_embedded.tsv</a>
+	w.write('url = https://app.box.com/index.php?rm=box_download_shared_file&shared_name=1ru8jihn2vi8qpruzbgc7dq73pnnqj4u&file_id=f_1519554536417\n')
+	w.write('file = %s%s%s\n' % (nlp_path, os.path.sep, 'hate_speech_dataset_embeddings.tsv'))
 	w.close()
 
 # Find NLP_HOME path
@@ -44,3 +44,4 @@ if not os.path.isfile(config_path):
 # config variable now accessible throughout project.
 config = configparser.RawConfigParser()
 config.read(config_path)
+print(config)
