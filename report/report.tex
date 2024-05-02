@@ -12,103 +12,109 @@
 %%e.agirre@ehu.es or Sergi.Balari@uab.es
 %% and that of ACL 08 by Joakim Nivre and Noah Smith
 
-\documentclass[11pt,a4paper]{article}
-\usepackage[hyperref]{acl2020}
-\usepackage{booktabs}
-\usepackage{graphicx}
-\usepackage{times}
-\usepackage{latexsym}
-\renewcommand{\UrlFont}{\ttfamily\small}
-
-\usepackage{microtype}
-
-\aclfinalcopy % Uncomment this line for the final submission
-
-
-\newcommand\BibTeX{B\textsc{ib}\TeX}
-
-\title{Classifying news articles by partisan lean}
-
-\author{Alice Cooper \\
-  School's Out University / Detriot, MI \\
-  \texttt{email@domain} \\\And
-  Bob Seger \\
-  Night Moves U / Detroit, MI \\
-  \texttt{email@domain} \\}
-
-\date{}
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{float}
+\title{Hate Speech on Social Media}
+\author{Merrilee Montgomery}
 
 \begin{document}
+
 \maketitle
-\begin{abstract}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-\end{abstract}
-
-
+\section{Abstract}
+\paragraph{Hate speech has become of concern online as criminally threatening, as a possible predictor of violent activity, and as an important contributor to radicalization. However, most studies have focused on \textit{explicit hate speech} which clearly states the bias and intentions of the speaker, and have focused on identifying hate speech based on key derogatory phrases. Study is needed of \textit{implicit hate speech}, which requires semantic and contextual understanding of language, making it more difficult for computers to identify and making it less likely for a speaker to be censored. Past study has classified hate speech in a variety of ways, including as implicit or explicit. This study acknowledges that hate speech may exist on a gradient from implicit to explicit and compares performance of a simple classification model to performance of two different regression models to determine whether hate speech can be understood as a gradient rather than discrete classes, with the possibility that some text's position on that gradient is a function of speech in context. This study finds that the model of text that considers both speech and context performs better than a simple linear regression and that its hidden representations of speech and context converge to be of equal magnitude and opposite signage. Overall, this study finds that the simple neural network classifier out performs the linear regressions, suggesting that hate speech is indeed discrete and unordered in categorization.}
 \section{Introduction}
-
-This is a skeleton latex document for you to write your report.
-
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\section{Related Work}
-
-Citations within the text appear in parentheses as~\citep{aho1972theory} or, if the author's name appears in the text itself, as \citet{andrew2007scalable}.
-
-
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-\section{Methods}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-
-\section{Results}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-Table~\ref{tab:a_table} shows a table. Note that we refer to output generated by \texttt{Experiments.ipynb}. This way, whenever we re-run our notebook, we can regenerate the paper with the latest results.
-
-\begin{table}[ht]
-\centering
-% note that we can refer to tables generated by our Experiments.ipynb notbook.
-\input{../notebooks/table.tex}
-\caption{\label{tab:a_table} A caption. }
-\end{table}
-
-Figure~\ref{fig:a_label} shows a figure
-
-\begin{figure}[ht]
-	\centering
-	% note that we can refer to figures generated by our Experiments.ipynb notbook.
-	\includegraphics[width=3.5in]{../notebooks/results.pdf}
-	\caption{A caption}
-	\label{fig:a_label}
+\paragraph{The advent of social media in the 21st century has created a new space in which people express their opinions to include bias, hatred, and extremism. Hate speech is defined as abusive or threatening speech or writing that expresses prejudice on the basis of ethnicity, religion, sexual orientation, or similar identifying grounds. Hate speech can contribute to radicalization, which can manifest as violent activity offline [1,5]. Sufficiently threatening speech online can constitute grounds for hate crime charges [8]. For this reason, the security community, to include law enforcement, should be concerned with detecting hate speech online and evaluating how threatening it is.}
+\paragraph{Most natural language processing studies of internet hate speech have focused on identifying \textit{explicit hate speech}, or speech that directly claims or clearly states the bias. This can be achieved by identifying certain key words and phrases. However, hate speech can also be \textit{implicit}, forcing the reader to assume the bias in order to understand what is being said rather than clearly stating the bias. Implicit hate speech can be identified by use of coded or indirect language such as sarcasm, metaphor, or circumlocution to promote prejudicial views without overtly stating them. Implicit hate speech is uniquely difficult to identify. Implicit hate speech requires a semantic understanding of language and cannot be identified by simply identifying certain words. As social media platforms become better at identifying explicit hate speech, users may shift to implicit language to avoid censorship. For this reason, implicit hate speech presents a unique challenge for natural language processing while being important to the security community as a subset of hate speech.}
+\section{Background}
+\paragraph{Identifying hate speech can be reduced to a classification task, which requires a vector embedding of the text to be classified. Past study has used SVM [2,6] and various BERT-derived [2,3,4] embeddings of sentences. It was noted [6] that models using SVM embeddings had difficulty interpreting irregular tokens such as acronyms, hashtags, and euphemisms that were not already in the SVM library.}
+\paragraph{Past studies have used specific derogatory words and phrases as indicators of hate speech [4,6]. Hertzbergm et al [4] collected survey responses to dog whistle prompts, embedded the responses with BERT, and found that distinct clusters emerged of those responses from individuals who clearly knew the derogatory meaning of the dog whistles and those individuals who did not. Magu et al [6] used a Long Short-Term Memory (LSTM) network and a Convolutional Neural Network (CNN) to try to separate texts containing phrases that could be either benign terms or derogatory references to certain people groups. However, approaches to hate speech recognition that rely on certain key phrases simply pushes hate speech and detection algorithms into an arms race, where new phrases can be invented to evade the algorithm until the algorithm catches up.}
+\paragraph{Beyond simply identifying hate speech [6,7], past study has also attempted to sort extremist speech by ideology [3] and into the explicit vs implicit categories [2]. El-Sherief et al [2] was a primary inspiration for this study. El-Sherief identifies the hallmarks of implicit hate speech to be the following: white grievance, incitement to violence, inferiority language, irony, stereotypes and misinformation, and threatening and intimidation. While some of these hallmarks are often present in explicit hate speech,they but are not always as obviously stated or clearly targeted in implicit hate speech. El-Shereif found that the BERT encoding of text consistently outperformed the SVM encodings. El-Sherief also identified the most common causes of mistakes in implicit hate identification. Models could not understand the semantics of coded hate symbols. Models ended up associating identity terms that were legitimately neutral tokens (such as \textit{Jew} and \textit{Black} with hate speech because they were used within hate speech so frequently. Finally, models had difficulties grasping relationships between statements used together to imply the overarching biased premise.}
+\section{Approach and Experiment}
+\paragraph{This study seeks to identify a quantitative difference between implicit hate speech and non-hate speech Twitter posts. These posts were collected and classified by El-Sherief [2]. This study generates 384-length vector representations of these Twitter posts using Sentence-BERT [9]. Sentence-BERT was chosen for embedding the Twitter posts for two reasons. BERT's token-level parsing of words and sentences will hopefully make for a more robust model with better capacity to understand the informal words, hashtags, acronyms, and euphemisms frequently used in online speech.}
+\paragraph{This study trained three different models for classifying the Twitter posts as not hate speech, implicit hate speech, or explicit hate speech. Each of the three models corresponded to some conceptual model of the relationships and barriers between benign, implicit hate, explicit hate texts. The first model was a simple probabilistic classifying neural-network consisting of a single 384x3 weights matrix parameter. The 384-length vector representing a text is passed through the weight matrix to get three scores, to which the Softmax function is applies to generate class probabilities. This first model corresponds to an understanding of these three categories of speech whereby all three can be independently evaluated. The text is assigned to the highest probability class.}
+\paragraph{The second model and third models test linear gradients of hate speech from not hate to implicit hate to explicit hate. While explicitness of the hate speech does not directly correspond to threateningness, implicit hate speech is so coded to obscure the threateningness of the statement. So, while threateningness of intention may not change, threateningness of the language may. For example, saying, "We will end them all soon" is an explicit threat and, depending on context, could institute threat of harm sufficient for a criminal charge. However, saying, "They will all be ended soon" creates a level of obscurity. For these regression models, the tweets were given scores of 0 (not hate), 1 (implicit hate), or 2 (explicit hate). The second model was a simple linear regression for which bias and Beta coefficients were learned to predict a score, for which a class was assigned based on which values (0,1, or 2) it was closest to. In this way, explicitness is measured on a simple  gradient. For model three, Betas and biases were learned for two separate regressions. Two scores were learned for each tweet. The final score used for classification was calculated by subtracting the former from the latter. The intention for this third model is to calculate the explicitness of the speech as $explicitness=speech-context$}
+\paragraph{The training set consisted of 3000 labeled Twitter posts evenly distributed between the three classes. All models were trained over 1000 epochs on training sets of 300 randomly selected records. All models were tested on a nearly even (88 explicit hate; 89 of the other two) split set of 266 records that were kept the same across all models, and that the models had not seen before. The limiting factor for these testing and training sets was the number of explicit hate texts. There were only 1088 explicit hate texts in the corpus. The learning rate was initialized to 0.0001 for all models, but a scheduler was set to adjust the learning rate by $gamma = 0.3$ every 100 steps. Finally, the Adam optimizer was used, and was set to perform back-propagation every epoch.}[H]
+\begin{figure}[H]
+        \includegraphics[width=1\textwidth]{Screenshot 2024-05-02 at 2.39.54 AM.png}
+        \caption{Predictive Models}
+        \label{fig:enter-label}
 \end{figure}
-
-\section{Discussion}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
+\section{Results}
+\paragraph{Although all three models were trained for 1000 epochs, the models all seemed to converge after 300 epochs. The finals biases 0.3263 for the simple linear model and 0.2973 and -0.2973 for the two-piece model.}
+\begin{figure}[H]
+    \centering
+    \subfigure[Model 1]
+        {\includegraphics[width=0.3\textwidth]{Screenshot 2024-05-02 at 2.54.37 AM.png}}
+    \subfigure[Model 2]
+        {\includegraphics[width=0.3\textwidth]{Screenshot 2024-05-02 at 3.01.38 AM.png}}
+    \subfigure[Model 3]
+        {\includegraphics[width=0.3\textwidth]{Screenshot 2024-05-02 at 3.08.44 AM.png}}
+    \caption{Loss Over Training Progression by Model}
+    \label{fig:bitchandahalf}
+\end{figure}
+\paragraph{}
+\begin{table}[H]
+\begin{tabular}
+{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+\hline
+&\multicolumn{3}{|c|}{Actual Class}\\
+\hline
+Predicted&No Hate&Implicit&Explicit\\
+\hline
+No Hate&50&22&17\\
+Implicit Hate&20&58&10\\
+Explicit Hate&5&19&64\\
+\hline  
+\end{tabular}
+\caption{Model 1 Confusion Matrix: Accuracy: ~0.64}
+\end{table}
+\begin{table}[H]
+\begin{tabular}
+{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+\hline
+&\multicolumn{3}{|c|}{Actual Class}\\
+\hline
+Predicted&No Hate&Implicit&Explicit\\
+\hline
+No Hate&79&68&34\\
+Implicit Hate&10&21&53\\
+Explicit Hate&0&0&1\\
+\hline  
+\end{tabular}
+\caption{Model 2 Confusion Matrix: Accuracy: ~0.38}
+\end{table}
+\begin{table}[H]
+\begin{tabular}
+{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+\hline
+&\multicolumn{3}{|c|}{Actual Class}\\
+\hline
+Predicted&No Hate&Implicit&Explicit\\
+\hline
+No Hate&65&36&12\\
+Implicit Hate&24&53&61\\
+Explicit Hate&0&0&15\\
+\hline  
+\end{tabular}
+\caption{Model 3 Confusion Matrix: Accuracy: 0.50}
+\end{table}
+\paragraph{The confusion matrices make it apparent that Model 1, which calculates all probabilities of hate speech classes independently, performs the best overall. However, it is interesting to notice that Model 2, the two piece regression, performed better than the single linear regression despite the fact that the weights converged to cancel each other out. Further examination of the trained two piece regression model found that the speech and context variables also converged such that the values that corresponded to speech and context were always equal in magnitude but opposite in sign such that, when context was subtracted from speech, the model was really just doubling speech.}
 \section{Conclusion}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-\section{Division of Labor}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-
-
-
-\bibliography{references}
-\bibliographystyle{acl_natbib}
-
-
+\paragraph{This study did not find evidence to support the hypothesis that hate speech exits on an ordered gradient from the three models that this study tested. Rather, the most accurate model learned probabilities for each of the three classes independently. However, the linear regressions used to test for this ordered gradient relationship did tend toward smaller values, leaving open possibility for future study.}
+\section{Bibliography}
+\begin{enumerate}
+\item Cahill, M., Taylor, J., Williams, M., Burnap, P., Javed, A., Liu, H., Sutherland, A. “Understanding Online Hate Speech as a Motivator and Predictor of Hate Crime.” U.S. Department of Justice Office of Justice Programs. 2019. https://www.ojp.gov/library/publications/understanding-online-hate-speech-motivator-and-predictor-hate-crime 
+\item ElSherief, M., Ziems, C., Muchlinski, D., Anupindi, V., Seybolt, J., Choudhury, M., Yang, D. “Latent Hatred: A Benchmark for Understanding Implicit Hate Speech.” UC San Diego, Georgia Institute of Technology. 2021. https://arxiv.org/pdf/2109.05322.pdf
+\item Gaikwad, M., Ahirrao, S. Kotecha, K., Abraham, A. “Multi-Ideology Multi-Class Extremism Classification Using Deep Leaning Techniques.” IEEE . Vol 10. 2022. https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9885202
+\item Hertzbergm, N., Sayeed, A., Breitholtz, E.,Cooper, R., Lindgren, E., Rettenegger, G., Ronnerstrand, B. “Distributional properties of political dogwhistle representations in Swedish BERT.” Proceedings of the Sixth Workshop on Online Abuse and Harms, pp. 170-175. 2022. Association for Computational linguistics.
+\item Margolin, J., Pezenik, S. “It’s become more difficult to identify motivations behind mass casualty attacks.” ABC News,  2024. https://abcnews.go.com/US/become-increasingly-difficult-identify-motivations-mass-casualty-attacks/story?id=106338758
+\item Magu, R., Joshi, K.m Luo, J. “Detecting the Hate Code on Social Media.” Association for the Advancement of Artificial Intelligence. https://arxiv.org/pdf/1703.05443.pdf
+\item Mussiraliyeva, S., Omarov, B., Bolatbek, M., Ospanov, R., Baispay, G., Medetbek, Z., Yeltay, Z. “Applying Deep Learning for Extremism Detection.” Communications in Computer Science and Information Services, vol. 1393. 2021. 10.1007/978-981-16-3660-856.
+\item “Online Extremism: More Complete Information Needed about Hate Crimes that Occur on the Internet.” U.S. Government Accountability Office. 2024. https://www.gao.gov/products/gao-24-105553
+\item Reimers, N., Gurevych, I. “Sentence-BERT: Sentence Embeddings using Siamese BERT-
+Networks.” Ubiquitous Knowledge Processing Lab Department of Computer Science, Technicsche Universitat Darmstadt. 2019.  https://arxiv.org/pdf/1908.10084.pdf.
+\end{enumerate}
 \end{document}
