@@ -1,0 +1,1 @@
+See a demo here, including snippets of phrases I thought up, sentences from the (scant) national fascism subreddit, and one angry email I got working in politics last year. Video available [https://tulane.box.com/s/b8rykqun8d17mr2ykdetn4b4n054ix2y].
